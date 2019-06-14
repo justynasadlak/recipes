@@ -3,12 +3,5 @@
     Welcome to {{ title }}!
   </h1>
 </div>
-<!-- <app-recipe></app-recipe> -->
 <router-outlet></router-outlet>
-
-<button (click)="getRecipes()">Search recipes</button>
-<hr />
-<ul>
-  <li *ngFor="let recipe of recipes$ | async">{{ recipe.title }}</li>
-</ul>
 

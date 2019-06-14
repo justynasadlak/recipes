@@ -1,19 +1,19 @@
 <div>
-  <label>ingredients:
-    <input placeholder="ingredients"/>
-  </label>
+  <div>
   <label>name:
-    <input placeholder="name"/>
+    <input [(ngModel)]="name" placeholder="name" />
   </label>
-  <button>Search</button>
 </div>
-<!--
 <div>
   <label>ingredients:
-    <input [(ngModel)] = "recipe.ingredients" placeholder="ingredients"/>
+    <input [(ngModel)]="ingredients" placeholder="ingredients" />
   </label>
-  <label>name:
-    <input [(ngModel)] = "recipe.name" placeholder="name"/>
-  </label>
-  <button>Search</button>
-</div> -->
+</div>
+  <button (click)="getRecipes()">Search recipes</button>
+  <hr />
+  <div *ngIf="data$ | async as _data">
+    <ul>
+      <li *ngFor="let recipe of _data.results"><a href="{{ recipe.href }}">{{ recipe.title }}</a></li>
+    </ul>
+  </div>
+</div>
