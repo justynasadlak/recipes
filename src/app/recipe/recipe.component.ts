@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Recipe } from '../recipe';
+import { Observable } from 'rxjs';
+import { Data } from '@angular/router';
+import { RecipesService } from '../service/recipes.service';
 
 @Component({
   selector: 'app-recipe',
@@ -8,15 +10,21 @@ import { Recipe } from '../recipe';
 })
 export class RecipeComponent implements OnInit {
 
+  public ingredients: string;
+  public name: string;
+  public data$: Observable<Data>;
 
-
-  constructor() { }
+  constructor(private recipesService: RecipesService) {}
 
   ngOnInit() {
   }
-//  recipe: Recipe {
-//     id: 1;
-//     name: 'test';
-//     ingredients: ['test1', 'test2'];
-//   };
+
+  async getRecipes() {
+    console.log('jestem w komponencie');
+    const ingred = this.ingredients.split(/[ ,]+/).join(',');
+    this.data$ = this.recipesService.getRecipes(this.name, ingred);
+    console.log(ingred);
+    console.log(this.name);
+
+  }
 }

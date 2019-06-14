@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RecipeComponent } from './recipe/recipe.component';
 
 const routes: Routes = [
-  { path: 'recipes', component: RecipeComponent }
+  { path: '', loadChildren: './recipe/recipe.module#RecipeModule' }
 ];
 
 @NgModule({
