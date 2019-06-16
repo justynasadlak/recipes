@@ -20,11 +20,7 @@ export class RecipeComponent implements OnInit {
   }
 
   async getRecipes() {
-    console.log('jestem w komponencie');
     if(this.ingredients) {this.ingredients = this.ingredients.split(/[ ,]+/).join(',');}
     this.data$ = this.recipesService.getRecipes(this.name, this.ingredients);
-    console.log(this.ingredients);
-    console.log(this.name);
-
   }
 }
