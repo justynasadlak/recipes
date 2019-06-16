@@ -1,19 +1,51 @@
 <div>
-  <div>
-  <label>name:
+  <!-- <div>
+
     <input [(ngModel)]="name" placeholder="name" />
-  </label>
-</div>
-<div>
-  <label>ingredients:
+
+  </div>
+  <div>
+
     <input [(ngModel)]="ingredients" placeholder="ingredients" />
-  </label>
-</div>
-  <button (click)="getRecipes()">Search recipes</button>
+
+  </div> -->
+  <!-- <button class="btn btn-success" (click)="getRecipes()">Search recipes</button> -->
+
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-lg-offset-4">
+      <div class="input-group">
+        <input [(ngModel)]="name" type="text" placeholder="name" class="form-control" />
+        <input [(ngModel)]="ingredients" type="text" placeholder="ingredients" class="form-control" />
+        <span class="input-group-btn">
+          <button class="btn btn-success" (click)="getRecipes()">Search recipes</button>
+        </span>
+      </div>
+    </div>
+  </div>
   <hr />
-  <div *ngIf="data$ | async as _data">
-    <ul>
-      <li *ngFor="let recipe of _data.results"><a href="{{ recipe.href }}">{{ recipe.title }}</a></li>
-    </ul>
+  <!-- <div class="card" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div> -->
+
+
+  <div *ngIf="data$ | async as _data" class="row align-items-center">
+    <div class="card-deck justify-content-center">
+      <div *ngFor="let recipe of _data.results" class="col-sm-3 mb-3">
+        <div class="card align-items-center text-center h-100">
+          <img src="{{ recipe.thumbnail }}" onerror="this.onerror=null; this.src='http://www.sbdcnet.org/wp-content/themes/consultix/images/no-image-found-360x250.png'" class="card-img-top" alt="{{ recipe.title }}">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ recipe.title }}</h5>
+            <p class="card-text">{{ recipe.ingredients }}</p>
+            <a href="{{ recipe.href }}" class="mt-auto btn btn-lg btn-block btn-outline-success">Go to recipe</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
