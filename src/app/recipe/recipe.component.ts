@@ -21,9 +21,9 @@ export class RecipeComponent implements OnInit {
 
   async getRecipes() {
     console.log('jestem w komponencie');
-    const ingred = this.ingredients.split(/[ ,]+/).join(',');
-    this.data$ = this.recipesService.getRecipes(this.name, ingred);
-    console.log(ingred);
+    if(this.ingredients) {this.ingredients = this.ingredients.split(/[ ,]+/).join(',');}
+    this.data$ = this.recipesService.getRecipes(this.name, this.ingredients);
+    console.log(this.ingredients);
     console.log(this.name);
 
   }
