@@ -11,6 +11,9 @@ export class RecipesService {
 
   constructor(private http: HttpClient) { }
 
+  /**
+   * I use CORS Anywhere proxy to solve the problem with CORS.
+   */
   getRecipes(name: string, ingredients: string): Observable<Data> {
      return this.http.get<Data>(
        `https://cors-anywhere.herokuapp.com/www.recipepuppy.com/api/?i=${!!ingredients ? ingredients : ''}&q=${!!name ? name : ''}`
