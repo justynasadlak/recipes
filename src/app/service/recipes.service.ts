@@ -12,7 +12,6 @@ export class RecipesService {
   constructor(private http: HttpClient) { }
 
   getRecipes(name: string, ingredients: string): Observable<Data> {
-    console.log('jestem w serwisie');
      return this.http.get<Data>(
        `https://cors-anywhere.herokuapp.com/www.recipepuppy.com/api/?i=${!!ingredients ? ingredients : ''}&q=${!!name ? name : ''}`
       );
